@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainNav component renders a .MainNav by default 1`] = `
+<div
+  className="MainNav"
+>
+  <ul
+    className="MainMav__folder-list"
+  />
+  <div
+    className="MainNav__button-container"
+  >
+    <CircleButton
+      className="MainNav__add-folder-button"
+      tag={[Function]}
+      to="/add-folder"
+      type="button"
+    >
+      Add Folder
+    </CircleButton>
+  </div>
+</div>
+`;
+
+exports[`MainNav component renders a link in ul for each folder in array 1`] = `
+<ul
+  className="MainMav__folder-list"
+>
+  <li
+    key="b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <NavLink
+      className="MainNav__folder-link"
+      to="/folder/b0715efe-ffaf-11e8-8eb2-f2801f1b9fd1"
+    >
+      <span
+        className="MainNav__folder-notes"
+      >
+        2
+      </span>
+      Important
+    </NavLink>
+  </li>
+  <li
+    key="b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <NavLink
+      className="MainNav__folder-link"
+      to="/folder/b07161a6-ffaf-11e8-8eb2-f2801f1b9fd1"
+    >
+      <span
+        className="MainNav__folder-notes"
+      >
+        2
+      </span>
+      Super
+    </NavLink>
+  </li>
+  <li
+    key="b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
+  >
+    <NavLink
+      className="MainNav__folder-link"
+      to="/folder/b07162f0-ffaf-11e8-8eb2-f2801f1b9fd1"
+    >
+      <span
+        className="MainNav__folder-notes"
+      >
+        0
+      </span>
+      Spangley
+    </NavLink>
+  </li>
+</ul>
+`;
