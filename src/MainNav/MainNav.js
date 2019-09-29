@@ -2,10 +2,8 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import './MainNav.css';
 import CircleButton from '../CircleButton/CircleButton';
+import { countNotesForFolder } from '../note-functions'
 import ApiContext from '../ApiContext';
-
-export const countNotesForFolder = (notes=[], folderId) =>
-  notes.filter(note => note.folderId === folderId).length
 
 export default class MainNav extends React.Component{
     static contextType = ApiContext;
