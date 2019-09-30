@@ -5,8 +5,10 @@ import MainNav from '../MainNav/MainNav';
 import NotePageNav from '../NotePageNav/NotePageNav';
 import NotePage from '../NotePage/NotePage';
 import Main from '../Main/Main';
+import AddFolder from '../AddFolder/AddFolder'
 import ApiContext from '../ApiContext';
 import config from '../config';
+import AddNote from '../AddNote/AddNote';
 
 class App extends Component {
   state = {
@@ -53,8 +55,8 @@ handleDeleteNote = noteId => {
           />
         ))}
         <Route path='/note/:noteId' component={NotePageNav} />
-        <Route path='/add-folder' component={NotePageNav} />
-        <Route path='/add-note' component={NotePageNav} />
+        <Route path='/add-folder' component={AddFolder} />
+        <Route path='/add-note' component={AddNote} />
       </>
     );
   }
