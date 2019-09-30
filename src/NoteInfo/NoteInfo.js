@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './NoteInfo.css';
+import PageError from '../PageError';
 
 export default class NoteInfo extends React.Component{
     static defaultProps = {
@@ -39,19 +40,21 @@ export default class NoteInfo extends React.Component{
         const {name, id, modified} = this.props;
         return(
             <div className='Note'>
-                <h2 className='Note__title'>
-                    <Link to={`/note/${id}`}>
-                        {name}
-                    </Link>
-                </h2>
-                <button 
-                    className='Note__delete' 
-                    type='button'
-                    onClick={this.handleClickDelete}
-                >
-                    Delete Note
-                </button>
-                <div className='Note__modified_date'>{modified}</div>
+                <PageError>
+                    <h2 className='Note__title'>
+                        <Link to={`/note/${id}`}>
+                            {name}
+                        </Link>
+                    </h2>
+                    <button 
+                        className='Note__delete' 
+                        type='button'
+                        onClick={this.handleClickDelete}
+                    >
+                        Delete Note
+                    </button>
+                    <div className='Note__modified_date'>{modified}</div>
+                </PageError>
             </div>
         );
     }
