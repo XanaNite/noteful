@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './MainNav.css';
 import CircleButton from '../CircleButton/CircleButton';
 import { countNotesForFolder } from '../note-functions'
@@ -10,6 +11,9 @@ export default class MainNav extends React.Component{
 
     render(){
         const {folders=[], notes=[]} = this.context;
+
+        console.log(folders)
+
         return(
             <div className='MainNav'>
                 <ul className='MainNav__folder-list'>
@@ -40,4 +44,16 @@ export default class MainNav extends React.Component{
             </div>
         );
     }
+}
+
+MainNav.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        content: PropTypes.string,
+        modified: PropTypes.string,
+    })),
+    folders: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+    })),
+
 }

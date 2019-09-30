@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './NoteInfo.css';
@@ -58,4 +59,9 @@ export default class NoteInfo extends React.Component{
             </div>
         );
     }
+}
+
+NoteInfo.propType = {
+    name: PropTypes.string.isRequired,
+    modified: PropTypes.string,
 }

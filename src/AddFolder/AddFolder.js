@@ -1,14 +1,30 @@
 import React from 'react'
 import ApiContext from '../ApiContext'
 import config from '../config'
+import ValidationError from '../ValidationError'
 import './AddFolder.css'
 
-export default class AddNote extends React.Component{
+export default class AddFolder extends React.Component{
     static contextType = ApiContext
 
     state = {
       error: null,
-    };
+      name: {
+        value: '',
+        touched: false,
+      },
+    }
+
+    updateName(name){
+        this.setState({name:{value: name, touched: true}})
+    }
+
+    validateName(fieldValue) {
+        const name = this.state.name.value.trim();
+        if (name.length === 0) {
+          return 'Name is required';
+        }
+    }
   
     handleSubmit = e => {
       e.preventDefault()
@@ -51,6 +67,7 @@ export default class AddNote extends React.Component{
 
     render(){
         const { error } = this.state
+        const nameError = this.validateName()
 
         return(
             <section className='AddFolder'>
@@ -65,7 +82,11 @@ export default class AddNote extends React.Component{
                             type='text'
                             name='name'
                             id='name'
-                            className='addFolder__name' />
+                            className='addFolder__name'
+                            onChange={e => this.updateName(e.target.value)} />
+                            {this.state.name.touched && (
+                                <ValidationError message={nameError} />
+                            )}
                     </div>
                     <div className='addFolder__button__group'>
                         <button type='reset' className='addFolder__button' onClick={this.handleClickCancel}>
@@ -74,6 +95,9 @@ export default class AddNote extends React.Component{
                         <button
                             type='submit'
                             className='addFolder__button'
+                            disabled={
+                                this.validateName()
+                            }
                         >
                             Save    
                         </button>

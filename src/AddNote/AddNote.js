@@ -23,8 +23,6 @@ export default class AddNote extends React.Component{
         const name = this.state.name.value.trim();
         if (name.length === 0) {
           return 'Name is required';
-        } else if (name.length < 3) {
-          return 'Name must be at least 3 characters long';
         }
     }
   
@@ -35,7 +33,8 @@ export default class AddNote extends React.Component{
       const note = {
         name: name.value,
         content: content.value,
-        folder: folder.value,
+        folderId: folder.value,
+        modified: new Date(),
       }
       this.setState({ error: null })
       fetch(`${config.API_ENDPOINT}/notes`, {
@@ -113,7 +112,7 @@ export default class AddNote extends React.Component{
                             >
                                 {folders.map(folder =>{
                                     return(
-                                    <option key={folder.id}>{folder.name}</option>
+                                    <option key={folder.id} id={folder.id}>{folder.name}</option>
                                     )
                                 })}
                             </select>

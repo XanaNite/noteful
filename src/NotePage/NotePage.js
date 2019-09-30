@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './NotePage.css';
 import NoteInfo from '../NoteInfo/NoteInfo';
 import ApiContext from '../ApiContext';
@@ -39,4 +40,12 @@ export default class NotePage extends React.Component{
             </section>
         );
     }
+}
+
+NotePage.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        content: PropTypes.string,
+        modified: PropTypes.string,
+    })),
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './Main.css';
 import NoteInfo from '../NoteInfo/NoteInfo';
 import CircleButton from '../CircleButton/CircleButton';
@@ -50,4 +51,12 @@ export default class Main extends React.Component{
             </section>
         );
     }
+}
+
+Main.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        content: PropTypes.string,
+        modified: PropTypes.string,
+    })),
 }
