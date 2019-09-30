@@ -19,7 +19,7 @@ export default class AddNote extends React.Component{
       }
       console.log('name: ', name.value)
       this.setState({ error: null })
-      fetch(config.API_ENDPOINT, {
+      fetch(`${config.API_ENDPOINT}/folders`, {
         method: 'POST',
         body: JSON.stringify(folder),
         headers: {
@@ -29,9 +29,7 @@ export default class AddNote extends React.Component{
       })
         .then(res => {
           if (!res.ok) {
-            // get the error message from the response,
             return res.json().then(error => {
-              // then throw it
               throw error
             })
           }
@@ -39,7 +37,7 @@ export default class AddNote extends React.Component{
         })
         .then(data => {
           name.value = ''
-          this.context.addfolder(data)
+          this.context.addFolder(data)
           this.props.history.push('/')
         })
         .catch(error => {
