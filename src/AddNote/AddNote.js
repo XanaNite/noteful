@@ -36,7 +36,11 @@ export default class AddNote extends React.Component{
         folderId: folder.value,
         modified: new Date(),
       }
+
+      console.log(note)
+      
       this.setState({ error: null })
+
       fetch(`${config.API_ENDPOINT}/notes`, {
         method: 'POST',
         body: JSON.stringify(note),
@@ -112,7 +116,12 @@ export default class AddNote extends React.Component{
                             >
                                 {folders.map(folder =>{
                                     return(
-                                    <option key={folder.id} id={folder.id}>{folder.name}</option>
+                                    <option 
+                                      key={folder.id} 
+                                      value={folder.id}
+                                    >
+                                      {folder.name}
+                                    </option>
                                     )
                                 })}
                             </select>
